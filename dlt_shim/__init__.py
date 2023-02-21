@@ -1,10 +1,10 @@
 try:
     import dlt
-except ImportError as _:
-    import shim as dlt
+except (ImportError, ModuleNotFoundError):
+    from .shim import *
     import sys
 
-    sys.modules['dlt'] = dlt
+    sys.modules['dlt'] = shim
 
 from dlt import *
 
